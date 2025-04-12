@@ -10,8 +10,8 @@ operators=(\+|\-|\*|\/|=|not|and|or|mod)
 literals=(\d+|\d*\.\d+|"[^"]*"|'[^']*|#t|#f|\(.*\))
 comments=;.*
 
-[JAVA]
-keywords=(if|else|for|while|public|private|class|return|try|catch)
-operators=(\+|\-|\*|\/|==|!=|>=|<=|&&|\|\||!|%)
-literals=(\d+|\d*\.\d+|"[^"]*"|true|false|\{.*\})
-comments=//.*
+[ASM]
+keywords=(mov|add|sub|mul|div|cmp|jmp|je|jne|jg|jl|call|ret|push|pop|section|global|db|dw|dd)
+operators=(\+|\-|\*|\/|\[|\]|,|:)
+literals=(0x[0-9A-Fa-f]+|\d+[Hh]|\b\d+\b|\b0b[01]+\b|'[^']'|"[^"\n]*")
+comments=;.*
