@@ -1,0 +1,76 @@
+<html><head><style>
+    body { font-family: Arial, sans-serif; }
+    .keyword { color: blue; font-weight: bold; }
+    .operator { color: green; font-weight: bold; }
+    .literal { color: orange; font-style: italic; }
+    .comment { color: gray; font-style: italic; }
+    </style></head><body><pre>
+    section data
+
+    msg db <span class='literal'>'Hello, World!'</span>, <span class='literal'>0</span>
+
+    msg_len equ  <span class='operator'>-</span> msg
+
+
+
+section bss
+
+    result resd <span class='literal'>1</span>
+
+
+
+section text
+
+    global _start
+
+
+
+_start:
+
+     Inicializar valores
+
+    mov eax, <span class='literal'>5</span>
+
+    mov ebx, <span class='literal'>10</span>
+
+
+
+     Operaciones
+
+    add eax, ebx
+
+    sub ebx, <span class='literal'>3</span>
+
+    imul eax, ebx                usar imul expl√cito
+
+
+
+     Guardar resultado
+
+    mov <span class='literal'>[result]</span>, eax
+
+
+
+     Imprimir mensaje
+
+    mov rax, <span class='literal'>1</span>                   syscall: write
+
+    mov rdi, <span class='literal'>1</span>                   stdout
+
+    mov rsi, msg
+
+    mov rdx, msg_len
+
+    syscall
+
+
+
+     Salir
+
+    mov rax, <span class='literal'>60</span>                  syscall: exit
+
+    xor rdi, rdi
+
+    syscall
+
+    </pre></body></html>

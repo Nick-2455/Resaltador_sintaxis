@@ -1,0 +1,30 @@
+<html><head><style>
+    body { font-family: Arial, sans-serif; }
+    .keyword { color: blue; font-weight: bold; }
+    .operator { color: green; font-weight: bold; }
+    .literal { color: orange; font-style: italic; }
+    .comment { color: gray; font-style: italic; }
+    </style></head><body><pre>
+    <span class='comment'>#lang racket
+</span>
+
+
+(define (times x y)
+
+  (<span class='operator'>*</span> x y))
+
+
+
+(define result (times <span class='literal'>3</span> <span class='literal'>5</span>))
+
+
+
+ Esto es un comentario
+
+
+
+(if (<span class='operator'>></span> resultado <span class='literal'>0</span>)
+
+    (display <span class='literal'>"result"</span>))
+
+    </pre></body></html>

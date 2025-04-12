@@ -1,17 +1,17 @@
 [PYTHON]
-keywords=(if|else|def|return|for|while|class|try|except)
-operators=(\+|\-|\*|\/|==|!=|>=|<=|and|or|not|%)
+keywords=(if|else|def|return|for|while|class|try|except|print|Exception|as|in)
+operators=(\+|\-|\*|\/|==|!=|>=|<=|and|or|not|%|=)
 literals=(\d+|\d*\.\d+|"[^"]*"|'[^']*'|True|False|\[.*\])
-comments=#.*
+comments=(#.*)
 
 [RACKET]
-keywords=(define|if|else|lambda|begin|define-struct)
+keywords=(lang|define|if|else|lambda|begin|define-struct)
 operators=(\+|\-|\*|\/|=|not|and|or|mod)
 literals=(\d+|\d*\.\d+|"[^"]*"|'[^']*|#t|#f|\(.*\))
-comments=;.*
+comments(;.*)
 
-[JAVA]
-keywords=(if|else|for|while|public|private|class|return|try|catch)
-operators=(\+|\-|\*|\/|==|!=|>=|<=|&&|\|\||!|%)
-literals=(\d+|\d*\.\d+|"[^"]*"|true|false|\{.*\})
-comments=//.*
+[ASM]
+keywords=(mov|add|sub|mul|div|cmp|jmp|je|jne|jg|jl|call|ret|push|pop|section|global|db|dw|dd)
+operators=(\+|\-|\*|\/|\[|\]|,|:)
+literals=(0x[0-9A-Fa-f]+|\d+[Hh]|\b\d+\b|\b0b[01]+\b|'[^']'|"[^"\n]*")
+comments(;.*)
