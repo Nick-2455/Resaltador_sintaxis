@@ -34,16 +34,16 @@ _start<span class='operator'>:</span>
     <span class='keyword'>mov</span> <span class='operator'>[</span>result<span class='operator'>]</span><span class='operator'>,</span> eax
 
     ; Imprimir mensaje
-    <span class='keyword'>mov</span> rax<span class='operator'>,</span> <span class='literal'>1</span>                  ; <span class='keyword'>syscall</span><span class='operator'>:</span> write
+    <span class='keyword'>mov</span> rax<span class='operator'>,</span> <span class='literal'>1</span>                  ; syscall<span class='operator'>:</span> write
     <span class='keyword'>mov</span> rdi<span class='operator'>,</span> <span class='literal'>1</span>                  ; stdout
     <span class='keyword'>mov</span> rsi<span class='operator'>,</span> msg
     <span class='keyword'>mov</span> rdx<span class='operator'>,</span> msg_len
-    <span class='keyword'>syscall</span>
+    syscall
 
     ; Salir
-    <span class='keyword'>mov</span> rax<span class='operator'>,</span> <span class='literal'>60</span>                 ; <span class='keyword'>syscall</span><span class='operator'>:</span> exit
+    <span class='keyword'>mov</span> rax<span class='operator'>,</span> <span class='literal'>60</span>                 ; syscall<span class='operator'>:</span> exit
     xor rdi<span class='operator'>,</span> rdi
-    <span class='keyword'>syscall</span>
+    syscall
 </pre>
 </body>
 </html>
