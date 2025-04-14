@@ -196,7 +196,7 @@ def main():
     process_file("2.rkt", "salida_racket.html")
     process_file("3.asm", "salida_asm.html")
     
-# se ejecuta el programa
+# Se ejecuta el programa
 if __name__ == "__main__":
     main()
     finalizador_Programa()
