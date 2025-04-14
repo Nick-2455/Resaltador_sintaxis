@@ -1,3 +1,28 @@
+"""
+Actividad Integradora 3.4 Resaltador de sintaxis (evidencia de competencia)
+
+
+Implementacion de Metodos Computacionales
+
+
+Docente: M.C. Baldomero Olvera Villanueva
+
+
+Equipo:
+- Jesus Felipe Bastidas Valenzuela (A01255206)
+- Jonathan Uziel Medina Rodriguez (A01255048)
+- Jorge Antonio Flores Hernandez (A01254623)
+- Manuel Nicolas Pacheco Peralta (A01255150)
+
+
+Fecha de entrega: 13 de abril de 2025.
+
+
+Descripcion: Este programa lee un archivo de texto con expresiones regulares de Python, Assembler y Racket.
+Tambien lee archivos que contienen codigo de uno de estos lenguajes de programacion y los procesa, exportando un
+archivo HTML donde se resaltan los comentarios, literales, operadores y palabras reservadas.
+"""
+
 import re
 import time
 
