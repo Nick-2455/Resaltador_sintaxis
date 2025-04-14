@@ -1,4 +1,24 @@
 import re
+import time
+
+# Decorador para medir el tiempo de ejecución de funciones
+# Complejidad Computacional: O(1)
+# Razon: El decorador no afecta la complejidad de la funcion decorada, solo mide el tiempo de ejecucion.
+def medir_tiempo(func):
+    def wrapper(*args, **kwargs):
+        inicio = time.perf_counter()
+        resultado = func(*args, **kwargs)
+        fin = time.perf_counter()
+        print(f"{func.__name__} tardó {fin - inicio:.4f} segundos")
+        return resultado
+    return wrapper
+
+# Función para mostrar un mensaje de finalización
+# Complejidad Computacional: O(1)
+# Razon: La funcion solo imprime un mensaje y espera una entrada del usuario.
+def finalizador_Programa():
+    """Función que se ejecuta al finalizar el programa"""
+    input("Presiona Enter para salir...")
 
 # Mapeo de extensiones a secciones en expresiones.txt
 LANGUAGE_MAP = {
@@ -11,6 +31,7 @@ LANGUAGE_MAP = {
 # Funcion para leer archivos y procesar expresiones
 # Complejidad Computacional: O(n), n siendo numero de caracteres en el archivo.
 # Razon: La lectura del archivo se realiza linea por linea, lo que quiere decir que si hay n caracteres en el archivo, el tiempo es lineal con respecto al tamaño del archivo.
+@medir_tiempo
 def read_file(file_path):
     """Lee un archivo y devuelve sus líneas preservando espacios y saltos de línea"""
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -20,6 +41,7 @@ def read_file(file_path):
 # Funcion para leer expresiones desde un archivo de configuracion
 # Complejidad Computacional: O(E * R), E siendo el numero de secciones de lenguaje en el archivo `expresiones.txt` y R numero de patrones en las listas keywords, operators, literals y comments.
 # Razon: Lee E secciones y para cada seccion recorre R patrones para crear la lista de expresiones. En el peor de los casos, todos los tokens estan en la misma linea.
+@medir_tiempo
 def read_expressions(config_file):
     """Parsea el archivo de configuración correctamente"""
     sections = {}
@@ -48,6 +70,7 @@ def read_expressions(config_file):
 # Funcion para resaltar el codigo
 # Complejidad Computacional: O(L * (T + R)), L siendo el numero de lineas del codigo, T el numero de tokens en cada linea y R el numero de patrones en las listas keywords, operators, literals y comments.
 # Razon: Para cada linea, se procesan T tokens y se comparan con R patrones. En el peor de los casos, todos los tokens estan en la misma linea.
+@medir_tiempo
 def highlight_code(code_lines, language, expressions):
     """Versión corregida que preserva saltos de línea y espacios originales"""
     lang_data = expressions.get(LANGUAGE_MAP.get(language, ""), {})
@@ -106,6 +129,7 @@ def highlight_code(code_lines, language, expressions):
 # Funcion para generar el HTML
 # Complejidad Computacional: O(N), N siendo el numero de caracteres en el codigo resaltado.
 # Razón: El HTML se genera con una plantilla fija y una sola operación de inserción de texto.
+@medir_tiempo
 def generate_html(highlighted_code):
     """Genera el HTML con estilos integrados"""
     return f"""<!DOCTYPE html>
@@ -126,7 +150,8 @@ def generate_html(highlighted_code):
 
 # Funcion principal para procesar archivos
 # Complejidad Computacional: O(L * (T + R)), T siendo el numero de tokens en la linea y R el numero de patrones en las listas keywords, operators, literals y comments.
-# RazonL El procesamiento de cada archivo implica leer el archivo, resaltar el código y generar el HTML. Cada paso tiene una complejidad lineal con respecto al tamaño del archivo.
+# Razon: El procesamiento de cada archivo implica leer el archivo, resaltar el código y generar el HTML. Cada paso tiene una complejidad lineal con respecto al tamaño del archivo.
+@medir_tiempo
 def process_file(input_file, output_file):
     """Procesa un archivo y genera el HTML final"""
     lang = input_file.split('.')[-1].lower()
@@ -140,7 +165,13 @@ def process_file(input_file, output_file):
 # Ejecución
 # Complejidad: O(Z * L * (T + R)), Z siendo el numero de archivos a procesar, L el numero de lineas, T el numero de tokens en cada linea y R el numero de patrones en las listas keywords, operators, literals y comments.
 # Razon: Se procesan Z archivos, cada uno con L lineas, T tokens y R patrones. La complejidad total es la suma de las complejidades de cada archivo.
-if __name__ == "__main__":
+@medir_tiempo
+def main():
     process_file("1.py", "salida_python.html")
     process_file("2.rkt", "salida_racket.html")
     process_file("3.asm", "salida_asm.html")
+    
+# se ejecuta el programa
+if __name__ == "__main__":
+    main()
+    finalizador_Programa()
